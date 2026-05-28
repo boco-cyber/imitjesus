@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="navy">#1B3A5C</color>
+    <color name="navy_dark">#0F2337</color>
+    <color name="gold">#B8962E</color>
+    <color name="gold_light">#D4AF37</color>
+    <color name="cream">#FDF8F0</color>
+    <color name="cream_dark">#F0E8D8</color>
+    <color name="text_primary">#1C1C1E</color>
+    <color name="text_secondary">#6B6B6B</color>
+    <color name="white">#FFFFFF</color>
+    <color name="divider">#E0D8CC</color>
+</resources>

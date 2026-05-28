@@ -1,0 +1,15 @@
+<resources>
+    <style name="Theme.Imitjesus" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/navy</item>
+        <item name="colorPrimaryVariant">@color/navy_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/gold</item>
+        <item name="colorSecondaryVariant">@color/gold_light</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:colorBackground">@color/cream</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:statusBarColor">@color/navy_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

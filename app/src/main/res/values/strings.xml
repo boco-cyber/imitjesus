@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Imitate Jesus</string>
+    <string name="loading">Loading today\'s reading…</string>
+    <string name="error_message">Could not load today\'s reading.\nCheck your connection and try again.</string>
+    <string name="retry">Try Again</string>
+    <string name="share">Share</string>
+    <string name="settings">Settings</string>
+    <string name="share_suffix">\n\nImitate Jesus — Daily Bread</string>
+</resources>
