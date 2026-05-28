@@ -1,10 +1,10 @@
 package imitjesus.servantspreps.org.data.repository
 
 import imitjesus.servantspreps.org.data.api.RetrofitClient
-import imitjesus.servantspreps.org.data.model.DailyEntry
+import imitjesus.servantspreps.org.data.model.ImitationQuote
 
 class QuoteRepository {
-    suspend fun getTodayQuote(): Result<DailyEntry> = runCatching {
-        RetrofitClient.api.getToday()
+    suspend fun getTodayQuote(): Result<ImitationQuote> = runCatching {
+        RetrofitClient.api.getToday().item
     }
 }

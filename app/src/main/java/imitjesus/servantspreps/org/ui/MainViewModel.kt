@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import imitjesus.servantspreps.org.data.model.DailyEntry
+import imitjesus.servantspreps.org.data.model.ImitationQuote
 import imitjesus.servantspreps.org.data.repository.QuoteRepository
 import kotlinx.coroutines.launch
 
 sealed class QuoteState {
     object Loading : QuoteState()
-    data class Success(val entry: DailyEntry) : QuoteState()
+    data class Success(val quote: ImitationQuote) : QuoteState()
     data class Error(val message: String) : QuoteState()
 }
 

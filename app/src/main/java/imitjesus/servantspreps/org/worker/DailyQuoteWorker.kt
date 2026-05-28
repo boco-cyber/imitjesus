@@ -16,11 +16,11 @@ class DailyQuoteWorker(
         val repository = QuoteRepository()
         val result = repository.getTodayQuote()
 
-        result.onSuccess { entry ->
+        result.onSuccess { quote ->
             NotificationHelper.showNotification(
                 applicationContext,
-                title = entry.title?.en ?: "Daily Bread",
-                body = "\"${entry.verse.text.en}\"\n— ${entry.verse.reference.en}"
+                title = quote.title,
+                body = quote.quote
             )
         }
 

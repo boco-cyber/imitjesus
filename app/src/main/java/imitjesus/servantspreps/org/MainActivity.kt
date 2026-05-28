@@ -17,8 +17,6 @@ import imitjesus.servantspreps.org.notifications.NotificationHelper
 import imitjesus.servantspreps.org.ui.MainViewModel
 import imitjesus.servantspreps.org.ui.QuoteState
 import imitjesus.servantspreps.org.worker.DailyQuoteWorker
-import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private val notificationPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
-    ) { /* permission granted or denied — notifications will work or silently skip */ }
+    ) { /* granted or denied silently */ }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,35 +83,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showQuote(state: QuoteState.Success) {
-        val entry = state.entry
+        val q = state.quote
         binding.loadingView.visibility = View.GONE
         binding.errorView.visibility = View.GONE
         binding.scrollView.visibility = View.VISIBLE
 
-        val displayDate = try {
-            val parsed = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(entry.date)
-            SimpleDateFormat("MMMM d, yyyy", Locale.getDefault()).format(parsed ?: Date())
-        } catch (e: Exception) { entry.date }
-
-        binding.tvDate.text = displayDate.uppercase(Locale.getDefault())
-        binding.tvMonthTheme.text = entry.monthTheme.en
-        binding.tvVerse.text = "“${entry.verse.text.en}”"
-        binding.tvReference.text = entry.verse.reference.en
-        binding.tvCommentary.text = entry.commentary.en
-        binding.tvAuthor.text = "— ${entry.authorTag.en}"
-        binding.tvPrayer.text = entry.prayer.en
-
-        val title = entry.title?.en
-        if (!title.isNullOrBlank()) {
-            binding.tvTitle.text = title.uppercase(Locale.getDefault())
-            binding.tvTitle.visibility = View.VISIBLE
-        }
+        val (month, day) = q.calendar_date.split("-").map { it.toIntOrNull() ?: 0 }
+        val months = arrayOf("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
+        val monthName = if (month in 1..12) months[month - 1] else q.calendar_date
+        binding.tvDate.text = "$monthName $day".uppercase(Locale.getDefault())
+        binding.tvSource.text = "Thomas à Kempis — The Imitation of Christ"
+        binding.tvTopic.text = q.topic.uppercase(Locale.getDefault())
+        binding.tvTitle.text = q.title
+        binding.tvQuote.text = "“${q.quote}”"
+        binding.tvBook.text = "Book ${q.book_number} — ${q.book_title}"
+        binding.tvArticle.text = "Chapter ${q.article_number}: ${q.article_title}"
     }
 
     private fun shareQuote() {
         val state = viewModel.state.value as? QuoteState.Success ?: return
-        val entry = state.entry
-        val text = "“${entry.verse.text.en}”\n— ${entry.verse.reference.en}" +
+        val q = state.quote
+        val text = "“${q.quote}”\n\n— ${q.book_title}, Ch. ${q.article_number}\n" +
+            "Thomas à Kempis, The Imitation of Christ" +
             getString(R.string.share_suffix)
         startActivity(
             Intent.createChooser(
