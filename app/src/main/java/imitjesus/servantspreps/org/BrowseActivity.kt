@@ -106,11 +106,11 @@ class BrowseActivity : AppCompatActivity() {
                 ContextCompat.getColor(this, R.color.forest_text),
                 ContextCompat.getColor(this, R.color.forest_primary)
             )
-            SettingsManager.THEME_ROYAL -> listOf(
-                ContextCompat.getColor(this, R.color.royal_bg),
-                ContextCompat.getColor(this, R.color.royal_primary),
-                ContextCompat.getColor(this, R.color.royal_text),
-                ContextCompat.getColor(this, R.color.royal_primary)
+            SettingsManager.THEME_CRIMSON -> listOf(
+                ContextCompat.getColor(this, R.color.crimson_bg),
+                ContextCompat.getColor(this, R.color.crimson_primary),
+                ContextCompat.getColor(this, R.color.crimson_text),
+                ContextCompat.getColor(this, R.color.crimson_primary)
             )
             else -> listOf( // Cream
                 ContextCompat.getColor(this, R.color.cream),

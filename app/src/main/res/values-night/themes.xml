@@ -1,5 +1,5 @@
 <resources>
-    <style name="Theme.Imitjesus" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Imitatio" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/navy</item>
         <item name="colorPrimaryVariant">@color/navy_dark</item>
         <item name="colorOnPrimary">@color/white</item>

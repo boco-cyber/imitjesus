@@ -10,4 +10,14 @@
     <color name="text_secondary">#6B6B6B</color>
     <color name="white">#FFFFFF</color>
     <color name="divider">#E0D8CC</color>
+
+    <!-- Forest Theme -->
+    <color name="forest_bg">#F0F4F0</color>
+    <color name="forest_primary">#2D4F2D</color>
+    <color name="forest_text">#1A241A</color>
+
+    <!-- Crimson Theme -->
+    <color name="crimson_bg">#FFF8F8</color>
+    <color name="crimson_primary">#800000</color>
+    <color name="crimson_text">#4A0000</color>
 </resources>

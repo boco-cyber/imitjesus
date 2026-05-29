@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/navy"
+        android:paddingTop="40dp"
         app:elevation="4dp">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -24,164 +25,13 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Content -->
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scrollView"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:visibility="gone"
-        tools:visibility="visible">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <!-- Date + Source Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/navy"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingTop="14dp"
-                    android:paddingBottom="14dp">
-
-                    <TextView
-                        android:id="@+id/tvDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/gold_light"
-                        android:textSize="11sp"
-                        android:letterSpacing="0.12"
-                        android:textAllCaps="true"
-                        tools:text="MAY 28" />
-
-                    <TextView
-                        android:id="@+id/tvSource"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:textSize="13sp"
-                        android:textStyle="italic"
-                        android:layout_marginTop="3dp"
-                        tools:text="Thomas à Kempis — The Imitation of Christ" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Quote Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:id="@+id/tvTopic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/gold"
-                        android:textSize="10sp"
-                        android:textAllCaps="true"
-                        android:letterSpacing="0.12"
-                        android:layout_marginBottom="10dp"
-                        tools:text="GRACE" />
-
-                    <TextView
-                        android:id="@+id/tvTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/navy"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:lineSpacingMultiplier="1.3"
-                        android:layout_marginBottom="14dp"
-                        tools:text="Does It Matter Much If At The Coming" />
-
-                    <TextView
-                        android:id="@+id/tvQuote"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/text_primary"
-                        android:textSize="20sp"
-                        android:lineSpacingMultiplier="1.5"
-                        android:fontFamily="serif"
-                        tools:text="&quot;Does it matter much, if at the coming of grace, you are cheerful and devout?&quot;" />
-
-                    <View
-                        android:layout_width="28dp"
-                        android:layout_height="2dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/gold" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Book + Article Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                app:cardBackgroundColor="@color/cream_dark"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/divider"
-                app:strokeWidth="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="SOURCE"
-                        android:textColor="@color/gold"
-                        android:textSize="10sp"
-                        android:textAllCaps="true"
-                        android:letterSpacing="0.12"
-                        android:layout_marginBottom="10dp" />
-
-                    <TextView
-                        android:id="@+id/tvBook"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/text_primary"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        tools:text="Book 2 — The Interior Life" />
-
-                    <TextView
-                        android:id="@+id/tvArticle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="13sp"
-                        android:layout_marginTop="4dp"
-                        tools:text="Chapter 9: Wanting No Share In Comfort" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+        tools:visibility="visible" />
 
     <!-- Loading -->
     <LinearLayout
@@ -190,6 +40,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
+        android:paddingTop="40dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <ProgressBar
@@ -214,6 +65,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="32dp"
+        android:paddingTop="72dp"
         android:visibility="gone"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -234,5 +86,16 @@
             android:text="@string/retry"
             app:backgroundTint="@color/navy" />
     </LinearLayout>
+
+    <!-- Navigation Tabs -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/navy"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

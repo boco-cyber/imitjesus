@@ -22,7 +22,7 @@ class SettingsManager(private val context: Context) {
         const val THEME_CREAM = "cream"
         const val THEME_DARK = "dark"
         const val THEME_FOREST = "forest"
-        const val THEME_ROYAL = "royal"
+        const val THEME_CRIMSON = "crimson"
 
         const val FONT_SERIF = "serif"
         const val FONT_SANS = "sans-serif"
@@ -34,7 +34,8 @@ class SettingsManager(private val context: Context) {
     }
 
     val themeFlow: Flow<String> = context.dataStore.data.map { preferences ->
-        preferences[THEME_COLOR] ?: THEME_CREAM
+        val theme = preferences[THEME_COLOR] ?: THEME_CREAM
+        if (theme == "royal") THEME_CRIMSON else theme
     }
 
     val fontFamilyFlow: Flow<String> = context.dataStore.data.map { preferences ->

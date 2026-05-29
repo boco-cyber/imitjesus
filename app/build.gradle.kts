@@ -55,6 +55,7 @@ dependencies {
     implementation(libs.activity.ktx)
     implementation(libs.work.runtime)
     implementation(libs.datastore.preferences)
+    implementation(libs.androidx.preference)
     implementation(libs.gson)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -11,7 +11,7 @@ import kotlin.random.Random
 
 sealed class QuoteState {
     object Loading : QuoteState()
-    data class Success(val quote: ImitationQuote) : QuoteState()
+    data class Success(val quotes: List<ImitationQuote>, val initialPosition: Int) : QuoteState()
     data class Error(val message: String) : QuoteState()
 }
 
@@ -20,45 +20,28 @@ class MainViewModel : ViewModel() {
     private val _state = MutableLiveData<QuoteState>(QuoteState.Loading)
     val state: LiveData<QuoteState> = _state
 
-    private var currentQuoteId: Int? = null
+    private var allQuotes: List<ImitationQuote>? = null
 
-    fun loadTodayQuote() {
+    fun loadQuotes(targetId: Int? = null) {
         _state.value = QuoteState.Loading
         viewModelScope.launch {
-            repository.getTodayQuote().fold(
-                onSuccess = { 
-                    currentQuoteId = it.id
-                    _state.value = QuoteState.Success(it) 
+            repository.getAllQuotes().fold(
+                onSuccess = { quotes ->
+                    allQuotes = quotes
+                    val position = if (targetId != null) {
+                        quotes.indexOfFirst { it.id == targetId }.coerceAtLeast(0)
+                    } else {
+                        // Find today's quote index
+                        repository.getTodayQuote().fold(
+                            onSuccess = { today ->
+                                quotes.indexOfFirst { it.id == today.id }.coerceAtLeast(0)
+                            },
+                            onFailure = { 0 }
+                        )
+                    }
+                    _state.value = QuoteState.Success(quotes, position)
                 },
                 onFailure = { _state.value = QuoteState.Error(it.message ?: "Unknown error") }
-            )
-        }
-    }
-
-    fun loadSpecificQuote(id: Int) {
-        loadQuoteById(id)
-    }
-
-    fun loadNextQuote() {
-        val nextId = (currentQuoteId ?: return) + 1
-        loadQuoteById(nextId)
-    }
-
-    fun loadPreviousQuote() {
-        val prevId = (currentQuoteId ?: return) - 1
-        if (prevId < 1) return
-        loadQuoteById(prevId)
-    }
-
-    private fun loadQuoteById(id: Int) {
-        _state.value = QuoteState.Loading
-        viewModelScope.launch {
-            repository.getQuoteById(id).fold(
-                onSuccess = {
-                    currentQuoteId = it.id
-                    _state.value = QuoteState.Success(it)
-                },
-                onFailure = { _state.value = QuoteState.Error(it.message ?: "Could not load quote $id") }
             )
         }
     }

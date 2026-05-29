@@ -71,7 +71,7 @@ class SettingsActivity : AppCompatActivity() {
                 SettingsManager.THEME_CREAM -> binding.toggleTheme.check(R.id.btnThemeCream)
                 SettingsManager.THEME_DARK -> binding.toggleTheme.check(R.id.btnThemeDark)
                 SettingsManager.THEME_FOREST -> binding.toggleTheme.check(R.id.btnThemeForest)
-                SettingsManager.THEME_ROYAL -> binding.toggleTheme.check(R.id.btnThemeRoyal)
+                SettingsManager.THEME_CRIMSON -> binding.toggleTheme.check(R.id.btnThemeCrimson)
             }
 
             val time = settingsManager.notificationTimeFlow.first()
@@ -102,7 +102,7 @@ class SettingsActivity : AppCompatActivity() {
                     R.id.btnThemeCream -> SettingsManager.THEME_CREAM
                     R.id.btnThemeDark -> SettingsManager.THEME_DARK
                     R.id.btnThemeForest -> SettingsManager.THEME_FOREST
-                    R.id.btnThemeRoyal -> SettingsManager.THEME_ROYAL
+                    R.id.btnThemeCrimson -> SettingsManager.THEME_CRIMSON
                     else -> SettingsManager.THEME_CREAM
                 }
                 lifecycleScope.launch { settingsManager.setTheme(theme) }
@@ -138,12 +138,12 @@ class SettingsActivity : AppCompatActivity() {
                 ContextCompat.getColor(this, R.color.forest_text),
                 ContextCompat.getColor(this, R.color.forest_primary)
             )
-            SettingsManager.THEME_ROYAL -> listOf(
-                ContextCompat.getColor(this, R.color.royal_bg),
+            SettingsManager.THEME_CRIMSON -> listOf(
+                ContextCompat.getColor(this, R.color.crimson_bg),
                 ContextCompat.getColor(this, R.color.white),
-                ContextCompat.getColor(this, R.color.royal_primary),
-                ContextCompat.getColor(this, R.color.royal_text),
-                ContextCompat.getColor(this, R.color.royal_primary)
+                ContextCompat.getColor(this, R.color.crimson_primary),
+                ContextCompat.getColor(this, R.color.crimson_text),
+                ContextCompat.getColor(this, R.color.crimson_primary)
             )
             else -> listOf( // Cream
                 ContextCompat.getColor(this, R.color.cream),
@@ -192,7 +192,7 @@ class SettingsActivity : AppCompatActivity() {
             intArrayOf(primary, android.graphics.Color.TRANSPARENT)
         )
         
-        listOf(binding.btnThemeCream, binding.btnThemeDark, binding.btnThemeForest, binding.btnThemeRoyal,
+        listOf(binding.btnThemeCream, binding.btnThemeDark, binding.btnThemeForest, binding.btnThemeCrimson,
                binding.btnFontSerif, binding.btnFontSans, binding.btnFontMono).forEach { btn ->
             btn.setTextColor(buttonTextColors)
             btn.backgroundTintList = buttonBgColors
